@@ -17,6 +17,9 @@ module.exports = {
       mail: {
         type: Sequelize.STRING
       },
+      mdp: {
+        type: Sequelize.STRING
+      },
       cp: {
         type: Sequelize.STRING
       },
