@@ -17,6 +17,12 @@ module.exports = {
       mail: {
         type: Sequelize.STRING
       },
+      telFixe: {
+        type: Sequelize.STRING
+      },
+      telMobile: {
+        type: Sequelize.STRING
+      },
       mdp: {
         type: Sequelize.STRING
       },
