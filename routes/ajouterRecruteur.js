@@ -12,12 +12,16 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
 
     var recruteur = models.Recruteur.build({
+
         nomRecruteur : req.body.nomRecruteur,
+        prenomRecruteur : req.body.prenomRecruteur,
         nomEntreprise : req.body.nomEntreprise,
         adresse : req.body.adresse,
         ville : req.body.ville,
         cp : req.body.cp,
         pays : req.body.pays,
+        telFixe : req.body.telFixe,
+        telMobile : req.body.telMobile,
         mail : req.body.mail,
         mdp : req.body.mdp
     });
