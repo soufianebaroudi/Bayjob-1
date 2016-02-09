@@ -11,6 +11,9 @@ module.exports = {
       nomRecruteur: {
         type: Sequelize.STRING
       },
+      prenomRecruteur: {
+        type: Sequelize.STRING
+      },
       nomEntreprise: {
         type: Sequelize.STRING
       },
@@ -27,6 +30,12 @@ module.exports = {
         type: Sequelize.STRING
       },
       mail: {
+        type: Sequelize.STRING
+      },
+      telFixe: {
+        type: Sequelize.STRING
+      },
+      telMobile: {
         type: Sequelize.STRING
       },
       mdp: {
