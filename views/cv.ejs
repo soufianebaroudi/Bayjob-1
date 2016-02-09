@@ -1,40 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Bayjob - <%=title%></title>
-    <!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="/css/style.css"  media="screen,projection"/>
-
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-
-<body>
-
-<nav>
-    <div class="nav-wrapper black">
-        <div class="container">
-            <a href="#!" class="brand-logo"><i class="material-icons left">work</i>Bayjob</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="#" ><i class="material-icons left">search</i>Recherche</a></li>
-                <li><a href="#" ><i class="material-icons left">chat</i>Notification</a></li>
-                <li><a href="#" ><i class="material-icons left">perm_identity</i>Déconnexion</a></li>
-            </ul>
-
-            <ul class="side-nav" id="mobile-demo">
-                <li><a href="#" ><i class="material-icons left">search</i>Recherche</a></li>
-                <li><a href="#" ><i class="material-icons left">chat</i>Notification</a></li>
-                <li><a href="#" ><i class="material-icons left">perm_identity</i>Déconnexion</a></li>
-
-            </ul>
-        </div>
-    </div>
-</nav>
+<%- include('include/header-connect') %>
 
 <section  class="page-title cyan darken-1 white-text">
     <div class="container">
@@ -45,9 +9,13 @@
                 </div>
             </div>
 
-            <div class="col s12 m8">
+            <div class="col s12 m6">
                 <h3>Jean DUPONT</h3>
                 <h5>Développeur Web</h5>
+            </div>
+
+            <div class="col s12 m2">
+                <p class="center-align"><span class="taux">78%</span><br/> de compatibilité</p>
             </div>
 
             <div class="col s6 m1">
@@ -57,10 +25,7 @@
             <div class="col s6 m1">
                 <a style="margin-top: 50%;" class="btn-floating btn-large waves-effect waves-light white"><i class="large material-icons blue-grey-text text-darken-1">thumb_down</i></a>
             </div>
-
-
         </div>
-
     </div>
 </section>
 
@@ -107,47 +72,4 @@
 
 
 </section>
-
-
-<footer class="page-footer blue-grey lighten-3">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="black-text"><%=title%></h5>
-                <p class="black-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce hendrerit metus non ante consequat, sit amet vestibulum risus consectetur. Cras et turpis molestie, finibus dui cursus, tincidunt mi. Praesent sodales interdum leo ut semper.</p>
-
-
-            </div>
-            <div class="col l3 s12">
-                <h5 class="black-text">Settings</h5>
-                <ul>
-                    <li><a class="black-text" href="#!">Link 1</a></li>
-                    <li><a class="black-text" href="#!">Link 2</a></li>
-                    <li><a class="black-text" href="#!">Link 3</a></li>
-                    <li><a class="black-text" href="#!">Link 4</a></li>
-                </ul>
-            </div>
-            <div class="col l3 s12">
-                <h5 class="black-text">Connect</h5>
-                <ul>
-                    <li><a class="black-text" href="#!">Link 1</a></li>
-                    <li><a class="black-text" href="#!">Link 2</a></li>
-                    <li><a class="black-text" href="#!">Link 3</a></li>
-                    <li><a class="black-text" href="#!">Link 4</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container black-text">
-            &copy; Copyright 2016 <a class="black-text" href="#"><%=title%></a>
-        </div>
-    </div>
-</footer>
-
-<!--Import jQuery before materialize.js-->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="/js/materialize.min.js"></script>
-<script type="text/javascript" src="/js/app.js"></script>
-</body>
-</html>
+<%- include('include/footer') %>
