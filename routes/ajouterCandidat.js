@@ -6,23 +6,22 @@ router.get('/', function(req, res, next) {
 });
 router.post('/', function(req, res, next) {
     var candidat = models.Candidat.build({
-        nomCandidat : req.body.nomCandidat,
-        prenomCandidat : req.body.prenomCandidat,
-        mailCandidat : req.body.mailCandidat,
-        telFixeCandidat : req.body.telFixeCandidat,
-        telMobileCandidat : req.body.telMobileCandidat,
-        mdpCandidat : req.body.mdpCandidat,
-        adresseCandidat : req.body.adresseCandidat,
-        cpCandidat : req.body.cpCandidat,
-        villeCandidat : req.body.villeCandidat,
-        paysCandidat : req.body.paysCandidat,
-        mobiliteCandidat : req.body.mobiliteCandidat,
-        dateNaissanceCandidat : req.body.dateNaissanceCandidat
+        nom: req.body.nomCandidat,
+        prenom: req.body.prenomCandidat,
+        dateNaissance: req.body.dateNaissanceCandidat,
+        telFixe: req.body.telFixeCandidat,
+        telMobile: req.body.telMobileCandidat,
+        adresse: req.body.adresseCandidat,
+        ville: req.body.villeCandidat,
+        cp: req.body.cpCandidat,
+        pays: req.body.paysCandidat,
+        mobilite: req.body.mobiliteCandidat,
+        mail: req.body.mailCandidat,
+        mdp: req.body.mdpCandidat
     });
-    console.log(req.body.nomCandidat);
-    console.log(candidat.nomCandidat);
+
     candidat.save().then(function() {
-        res.send('ok added : ' + candidat.nomCandidat);
+        res.send('ok added : ' + candidat.nom0);
     })
 });
 module.exports = router;
