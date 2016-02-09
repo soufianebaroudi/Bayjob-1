@@ -18,8 +18,6 @@ module.exports = function(sequelize, DataTypes) {
         Offre.belongsTo(models.Contrat_type);
         Offre.belongsTo(models.Niveau_etude);
         Offre.hasMany(models.Mission_offre);
-
-
         Offre.belongsToMany(models.Competence, {through: 'Offre_competence'});
       }
     }
