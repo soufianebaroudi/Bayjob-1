@@ -7,6 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     telFixe: DataTypes.STRING,
     telMobile: DataTypes.STRING,
     mdp: DataTypes.STRING,
+    adresse: DataTypes.STRING,
     cp: DataTypes.STRING,
     ville: DataTypes.STRING,
     pays: DataTypes.STRING,
