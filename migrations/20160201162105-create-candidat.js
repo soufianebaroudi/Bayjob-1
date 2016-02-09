@@ -26,6 +26,9 @@ module.exports = {
       mdp: {
         type: Sequelize.STRING
       },
+      adresse: {
+        type: Sequelize.STRING
+      },
       cp: {
         type: Sequelize.STRING
       },
