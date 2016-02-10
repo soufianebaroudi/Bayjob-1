@@ -8,7 +8,9 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var ajouterCandidat = require('./routes/ajouterCandidat');
+var ajouterRecruteur = require('./routes/ajouterRecruteur');
 var cv = require('./routes/cv');
+var login = require('./routes/login');
 var rechercheOffres = require('./routes/rechercherOffres');
 
 var app = express();
@@ -28,7 +30,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/ajouterCandidat', ajouterCandidat);
+app.use('/ajouterRecruteur', ajouterRecruteur);
 app.use('/cv', cv);
+app.use('/login', login);
 app.use('/rechercheOffres', rechercheOffres);
 
 // catch 404 and forward to error handler
