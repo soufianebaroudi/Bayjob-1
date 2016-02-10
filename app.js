@@ -10,6 +10,9 @@ var users = require('./routes/users');
 var ajouterCandidat = require('./routes/ajouterCandidat');
 var cv = require('./routes/cv');
 var rechercheOffres = require('./routes/rechercherOffres');
+var ajouterRecruteur = require('./routes/ajouterRecruteur');
+var ajouterOffre = require('./routes/ajouterOffre');
+var login = require('./routes/login')
 
 var app = express();
 
@@ -27,9 +30,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/ajouterRecruteur', ajouterRecruteur);
+app.use('/ajouterOffre', ajouterOffre);
 app.use('/ajouterCandidat', ajouterCandidat);
 app.use('/cv', cv);
 app.use('/rechercheOffres', rechercheOffres);
+app.use('/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
