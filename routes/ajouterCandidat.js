@@ -21,7 +21,8 @@ router.post('/', function(req, res, next) {
     });
 
     candidat.save().then(function() {
-        res.send('ok added : ' + candidat.nom0);
+        res.render('login', { title:'Page de connexion', email: candidat.mail, mdp : candidat.mdp});
+        //res.send('ok added : ' + candidat.nom);
     })
 });
 module.exports = router;
