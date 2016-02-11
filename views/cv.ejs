@@ -1,6 +1,6 @@
 <%- include('include/header-connect') %>
 
-<section  class="page-title cyan darken-1 white-text">
+<section class="page-title cyan darken-1 white-text">
     <div class="container">
         <div class="row">
             <div class="col s12 m2">
@@ -10,8 +10,8 @@
             </div>
 
             <div class="col s12 m6">
-                <h3>Jean DUPONT</h3>
-                <h5>Développeur Web</h5>
+                <h3><%= cv.Candidat.prenom %> <%= cv.Candidat.nom %></h3>
+                <h5><%= cv.titre %></h5>
             </div>
 
             <div class="col s12 m2">
@@ -19,11 +19,14 @@
             </div>
 
             <div class="col s6 m1">
-                <a style="margin-top: 50%;" class="btn-floating btn-large waves-effect waves-light blue-grey darken-1"><i class="large material-icons">thumb_up</i></a>
+                <a style="margin-top: 50%;"
+                   class="btn-floating btn-large waves-effect waves-light blue-grey darken-1"><i
+                            class="large material-icons">thumb_up</i></a>
             </div>
 
             <div class="col s6 m1">
-                <a style="margin-top: 50%;" class="btn-floating btn-large waves-effect waves-light white"><i class="large material-icons blue-grey-text text-darken-1">thumb_down</i></a>
+                <a style="margin-top: 50%;" class="btn-floating btn-large waves-effect waves-light white"><i
+                            class="large material-icons blue-grey-text text-darken-1">thumb_down</i></a>
             </div>
         </div>
     </div>
@@ -31,67 +34,155 @@
 
 <section class="page-content" id="cv">
     <div class="container">
+
         <div class="row">
-                <div class="col s12 m10 offset-m1">
+            <div class="col s12 m10 offset-m1">
 
                 <ul class="collapsible" data-collapsible="accordion">
                     <li>
-                        <div class="collapsible-header active"><i class="material-icons">filter_drama</i>Description générale</div>
+                        <div class="collapsible-header active"><i class="material-icons">description</i>Description
+                            générale
+                        </div>
                         <div class="collapsible-body">
                             <div class="container">
-                            <h4>Résumé</h4>
+                                <h4>Résumé</h4>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce hendrerit metus non ante consequat, sit amet vestibulum risus consectetur. Cras et turpis molestie, finibus dui cursus, tincidunt mi. Praesent sodales interdum leo ut semper.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce hendrerit metus non
+                                    ante consequat, sit amet vestibulum risus consectetur. Cras et turpis molestie,
+                                    finibus dui cursus, tincidunt mi. Praesent sodales interdum leo ut semper.</p>
 
-                            <h4>Niveau d'étude</h4>
-                            BAC + 5
-                            <h4>Compétences</h4>
-                            <table>
-                                <tbody>
-                                <tr>
-                                    <td>HTML 5</td>
-                                    <td>&starf;&starf;&starf;&starf;&starf;</td>
-                                </tr>
-                                <tr>
-                                    <td>CSS 3</td>
-                                    <td>&starf;&starf;&starf;&starf;&starf;</td>
-                                </tr>
-                                <tr>
-                                    <td>JavaScript</td>
-                                    <td>&starf;&starf;&starf;&starf;&star;</td>
-                                </tr>
-                                <tr>
-                                    <td>PHP</td>
-                                    <td>&starf;&starf;&starf;&star;&star;</td>
-                                </tr>
-                                <tr>
-                                    <td>J2EE</td>
-                                    <td>&starf;&starf;&starf;&starf;&star;</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                                <h4>Niveau d'étude</h4>
+                                BAC + 5
+                                <h4>Compétences</h4>
+                                <table>
+                                    <tbody>
+                                    <% for(var i = 0; i < cv.Competence_CVs.length; i++) { %>
+                                    <tr>
+                                        <td><%= cv.Competence_CVs[i].intitule %></td>
+                                        <td>
+                                            <% for(var j = 0; j < 5;j++){
+                                            if(j < cv.Competence_CVs[i].niveau){ %>
+                                            <i class="material-icons">star</i>
+                                            <% }else{ %>
+                                            <i class="material-icons">star_border</i>
+                                            <% }
+                                            } %>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">place</i>Formation</div>
-                        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                        <div class="collapsible-header"><i class="material-icons">school</i>Formation</div>
+                        <div class="collapsible-body">
+                            <div class="container">
+
+                                <% for(var i = 0; i < cv.Formations.length; i++) { %>
+                                <div class="row"
+                                     style="border-bottom: 1px solid #ddd; padding-bottom: 20px; padding-top: 20px">
+                                    <div class="col s12 m2">
+                                        <%= cv.Formations[i].annee %>
+                                    </div>
+                                    <div class="col s12 m10">
+                                        <strong><%= cv.Formations[i].intitule_diplome %></strong><br/>
+                                        <%= cv.Formations[i].etablissement %> - <%= cv.Formations[i].ville %><br/>
+                                        Mention <%= cv.Formations[i].mention %>
+                                    </div>
+                                </div>
+
+                                <% } %>
+                            </div>
+                        </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">whatshot</i>Expériences professionnelles</div>
-                        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                        <div class="collapsible-header"><i class="material-icons">work</i>Expériences
+                            professionnelles
+                        </div>
+                        <div class="collapsible-body">
+                            <div class="container">
+
+                                <% for(var i = 0; i < cv.Experience_pros.length; i++) { %>
+                                <div class="row"
+                                     style="border-bottom: 1px solid #ddd; padding-bottom: 20px; padding-top: 20px">
+                                    <div class="col s12 m2">
+                                        <%= cv.Experience_pros[i].duree %>
+                                    </div>
+                                    <div class="col s12 m10">
+                                        <strong><%= cv.Experience_pros[i].poste %></strong><br/>
+                                        <%= cv.Experience_pros[i].entreprise %> - <%= cv.Experience_pros[i].ville %>
+                                        <br/>
+                                        Type de contrat : <%= cv.Experience_pros[i].Contrat_type.intitule %>
+                                        <br/><br/>
+                                        Mission(s) :
+                                        <ul>
+                                            <% for(var j = 0; j < cv.Experience_pros[i].Mission_CVs.length; j++) { %>
+                                            <li><%= cv.Experience_pros[i].Mission_CVs[j].intitule %></li>
+                                            <% } %>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <% } %>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">chat</i>Langues</div>
+                        <div class="collapsible-body">
+                            <div class="container">
+
+                                <table>
+                                    <tbody>
+                                    <% for(var i = 0; i < cv.Langues.length; i++) { %>
+                                    <tr>
+                                        <td><%= cv.Langues[i].intitule %></td>
+                                        <td>
+                                            <% for(var j = 0; j < 5;j++){
+                                            if(j < cv.Langues[i].niveau){ %>
+                                            <i class="material-icons">star</i>
+                                            <% }else{ %>
+                                            <i class="material-icons">star_border</i>
+                                            <% }
+                                            } %>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">public</i>Centres d'intérêt</div>
+                        <div class="collapsible-body">
+                            <div class="container">
+
+                                <table>
+                                    <tbody>
+                                    <% for(var i = 0; i < cv.Centre_interets.length; i++) { %>
+                                    <tr>
+                                        <td><%= cv.Centre_interets[i].intitule %></td>
+                                    </tr>
+                                    <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </li>
                 </ul>
 
-</div>
+            </div>
 
         </div>
 
-            <!--<div class="col s12 m3">
-                <p><a class="waves-effect waves-light btn blue-grey darken-1"><i class="material-icons left">info</i>En savoir plus</a></p>
-            </div>-->
-        </div>
+        <!--<div class="col s12 m3">
+            <p><a class="waves-effect waves-light btn blue-grey darken-1"><i class="material-icons left">info</i>En savoir plus</a></p>
+        </div>-->
     </div>
-
+    </div>
 
 
 </section>
