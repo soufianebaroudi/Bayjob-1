@@ -1,9 +1,14 @@
+/**
+ * Created by Antoine Delahaye on 08/02/2016.
+ */
 var models = require('../models');
 var express = require('express');
 var router = express.Router();
+
 router.get('/', function(req, res, next) {
     res.render('ajouterCandidat', { title: 'Inscription d\'un Candidat '});
 });
+
 router.post('/', function(req, res, next) {
     var candidat = models.Candidat.build({
         nom: req.body.nomCandidat,

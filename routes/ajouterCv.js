@@ -1,54 +1,82 @@
+/**
+ * Created by Antoine Delahaye on 09/02/2016.
+ */
 var models = require('../models');
 var express = require('express');
 var router = express.Router();
+
 router.get('/', function(req, res, next) {
     res.render('ajouterCv', { title: 'AJout d\'un Cv'});
 });
+
 router.post('/', function(req, res, next) {
-    console.log("test avant cv");
-    var cv = models.Cv.build({ // pb a cette ligne avec Cv...
-        titre: req.body.titre,
+
+    var titrecv = req.body.titre;
+
+    var intitulediplome = req.body.IntituleDiplome;
+    var etabli = req.body.etablissement;
+    var anneediplome = req.body.annee;
+    var mentiondiplome = req.body.mention;
+    var villediplome = req.body.VilleDi;
+
+    var entreprisenom = req.body.entreprise;
+    var posteentreprise = req.body.poste;
+    var dureeposte = req.body.duree;
+    var villeposte = req.body.villeXp;
+
+    var intitulemission = req.body.intituleMission;
+
+    var intitulecompetence = req.body.intituleCompetence;
+    var niveaucompetence = req.body.niveauCompetence;
+
+    var denominationlangue = req.body.denominationLangue;
+    var niveaulangue = req.body.niveauLangue;
+
+    var intituleinteret= req.body.intituleInteret;
+
+    var cv = models.CVs.build({ // pb a cette ligne avec Cv...
+        titre: titrecv,
         CandidatId: parseInt("1") // to change
     });
     console.log("test apres cv");
 
     var formation = models.Formations.build({
-        intitule_diplome: req.body.IntituleDiplome,
-        etablissement: req.body.etablissement,
-        annee: req.body.annee,
-        mention: req.body.mention,
-        ville: req.body.VilleDi,
+        intitule_diplome: intitulediplome,
+        etablissement: etabli,
+        annee: anneediplome,
+        mention: mentiondiplome,
+        ville: villediplome,
         CVId: cv.id
     });
 
     var experience_pro = models.Experience_pros.build({
-        entreprise: req.body.entreprise,
-        poste: req.body.poste,
-        duree: req.body.duree,
-        ville: req.body.villeXp,
+        entreprise: entreprisenom,
+        poste: posteentreprise,
+        duree: dureeposte,
+        ville: villeposte,
         ContratTypeId: parseInt("1"), // to change
         CVId: cv.id
     });
 
     var mission_CV = models.Mission_CVs.build({
-        intitule: req.body.intituleMission,
+        intitule: intitulemission,
         ExperienceProId: experience_pro.id
     });
 
     var competence_CV = models.Competence_CVs.build({
-        intitule: req.body.intituleCompetence,
-        niveau: req.body.niveauCompetence,
+        intitule: intitulecompetence,
+        niveau: niveaucompetence,
         CVId: cv.id
     });
 
     var langue = models.Langues.build({
-        intitule: req.body.denominationLangue,
-        niveau: req.body.niveauLangue,
+        intitule: denominationlangue,
+        niveau: niveaulangue,
         CVId: cv.id
     });
 
     var centre_interet = models.Centre_interets.build({
-        intitule: req.body.intituleInteret,
+        intitule: intituleinteret,
         CVId: cv.id
     });
 
