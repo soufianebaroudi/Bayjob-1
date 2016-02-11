@@ -34,13 +34,12 @@ router.post('/', function(req, res, next) {
 
     var intituleinteret= req.body.intituleInteret;
 
-    var cv = models.CVs.build({ // pb a cette ligne avec Cv...
+    var cv = models.CV.build({ // pb a cette ligne avec Cv...
         titre: titrecv,
-        CandidatId: parseInt("1") // to change
+        CandidatId: parseInt("14") // to change
     });
-    console.log("test apres cv");
 
-    var formation = models.Formations.build({
+    var formation = models.Formation.build({
         intitule_diplome: intitulediplome,
         etablissement: etabli,
         annee: anneediplome,
@@ -49,7 +48,7 @@ router.post('/', function(req, res, next) {
         CVId: cv.id
     });
 
-    var experience_pro = models.Experience_pros.build({
+    var experience_pro = models.Experience_pro.build({
         entreprise: entreprisenom,
         poste: posteentreprise,
         duree: dureeposte,
@@ -58,38 +57,33 @@ router.post('/', function(req, res, next) {
         CVId: cv.id
     });
 
-    var mission_CV = models.Mission_CVs.build({
+    var mission_CV = models.Mission_CV.build({
         intitule: intitulemission,
         ExperienceProId: experience_pro.id
     });
 
-    var competence_CV = models.Competence_CVs.build({
-        intitule: intitulecompetence,
-        niveau: niveaucompetence,
-        CVId: cv.id
-    });
-
-    var langue = models.Langues.build({
+    var langue = models.Langue.build({
         intitule: denominationlangue,
         niveau: niveaulangue,
         CVId: cv.id
     });
 
-    var centre_interet = models.Centre_interets.build({
+    var centre_interet = models.Centre_interet.build({
         intitule: intituleinteret,
         CVId: cv.id
     });
 
-
-    cv.save().then(function(){
-        res.send('ok added : ' );
+    var competence_CV = models.Competence_CV.build({
+        intitule: intitulecompetence,
+        niveau: niveaucompetence,
+        CVId: cv.id
     });
+
+
     formation.save().then(function(){
         res.send('ok added : ' );
     });
-    experience_pro.save().then(function(){
-        res.send('ok added : ' );
-    });
+
     mission_CV.save().then(function(){
         res.send('ok added : ' );
     });
@@ -100,6 +94,17 @@ router.post('/', function(req, res, next) {
         res.send('ok added : ' );
     });
     centre_interet.save().then(function(){
+        res.send('ok added : ' );
+    });
+    mission_CV.save().then(function(){
+        res.send('ok added : ' );
+    });
+
+    cv.save().then(function(){
+        res.send('ok added : ' );
+    });
+
+    experience_pro.save().then(function(){
         res.send('ok added : ' );
     });
 
