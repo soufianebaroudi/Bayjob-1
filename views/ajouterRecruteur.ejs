@@ -1,35 +1,115 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title><%=title%></title>
-    <!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="/css/style.css"  media="screen,projection"/>
+<%- include('include/header-connect') %>
 
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
+<section  class="page-title cyan darken-1 white-text">
+    <div class="container">
+        <div class="row">
+            <div id="logo-title" class="col s3 m1">
+                <i class="medium material-icons">perm_identity</i>
+            </div>
 
-<body>
+            <div class="col s9 m8">
+                <h3><%=title%></h3>
+            </div>
+        </div>
+    </div>
+</section>
 
-<form method="post" action="/ajouterRecruteur">
-    <input type="text" name="nomRecruteur" placeholder="Nom Recruteur">
-    <input type="text" name="prenomRecruteur" placeholder="Prénom Recruteur">
-    <input type="text" name="nomEntreprise" placeholder="Entrprise">
-    <input type="text" name="adresse" placeholder="addresse">
-    <input type="text" name="ville" placeholder="ville">
-    <input type="text" name="cp" placeholder="cp">
-    <input type="text" name="pays" placeholder="pays">
-    <input type="text" name="telFixe" placeholder="Téléphone fix">
-    <input type="text" name="telMobile" placeholder="Téléphone mobile">
-    <input type="text" name="mail" placeholder="mail">
-    <input type="password" name="mdp" placeholder="Mot de passe">
-    <input type="submit">
-</form>
+<section class="page-content" id="ajouterRecruteur">
+    <div class="container">
+
+            <form class="col s12 m8 offset-m3" action="/ajouterRecruteur" method="post">
 
 
-</body>
-</html>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="nomRecruteur" type="text" name="nomRecruteur" class="validate">
+                        <label for="nomRecruteur">Nom</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="prenomRecruteur" type="text" name="prenomRecruteur" class="validate">
+                        <label for="prenomRecruteur">Prénom</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="nomEntreprise" type="text" name="nomEntreprise" class="validate">
+                        <label for="nomEntreprise">Entreprise</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="adresse" type="text" name="adresse" class="validate">
+                        <label for="adresse">Adresse</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="ville" type="text" name="ville" class="validate">
+                        <label for="ville">Ville</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="cp" type="text" name="cp" class="validate">
+                        <label for="cp">Code Postale</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="pays" type="text" name="pays" class="validate">
+                        <label for="pays">Pays</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="telFixe" type="tel" name="telFixe" class="validate">
+                        <label for="telFixe">Telephone Fix</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="telMobile" type="tel" name="telMobile" class="validate">
+                        <label for="telMobile">Telephone Mobile</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="mail" type="email" name="mail" class="validate">
+                        <label for="mail">Mail</label>
+                    </div>
+                </div>
+
+               <center>
+
+                   <div class="row">
+
+                       <div class="input-field col s6">
+                           <i class="material-icons prefix">account_circle</i>
+                           <input id="mdp" type="password" name="mdp" class="validate">
+                           <label for="mdp">Mot de passe</label>
+                       </div>
+                   </div>
+               </center>
+                <br>
+                <center>
+
+                   <div class="row">
+                    <button class="btn waves-effect waves-light blue-grey darken-1" type="submit" name="connexion">S'inscrire
+                        <i class="material-icons right">send</i>
+                    </button>
+                     </div>
+               </center>
+            </form>
+
+    </div>
+
+</section>
+
+
+<%- include('include/footer') %>
