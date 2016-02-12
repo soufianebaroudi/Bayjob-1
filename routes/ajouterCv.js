@@ -36,7 +36,7 @@ router.post('/', function(req, res, next) {
 
     var cv = models.CV.build({ // pb a cette ligne avec Cv...
         titre: titrecv,
-        CandidatId: parseInt("14") // to change
+        CandidatId: parseInt("2") // to change
     });
 
     var formation = models.Formation.build({
