@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
 
     var titrecv = req.body.titre;
+    var resumecv = req.body.resumecv;
 
     var intitulediplome = req.body.IntituleDiplome;
     var etabli = req.body.etablissement;
@@ -34,9 +35,10 @@ router.post('/', function(req, res, next) {
 
     var intituleinteret= req.body.intituleInteret;
 
-    var cv = models.CV.build({ // pb a cette ligne avec Cv...
+    var cv = models.CV.build({
         titre: titrecv,
-        CandidatId: parseInt("14") // to change
+        resume: resumecv,
+        CandidatId: parseInt("1") // to change
     });
 
     var formation = models.Formation.build({
@@ -80,6 +82,14 @@ router.post('/', function(req, res, next) {
     });
 
 
+    cv.save().then(function(){
+        res.send('ok added : ' );
+    });
+
+    experience_pro.save().then(function(){
+        res.send('ok added : ' );
+    });
+
     formation.save().then(function(){
         res.send('ok added : ' );
     });
@@ -100,13 +110,7 @@ router.post('/', function(req, res, next) {
         res.send('ok added : ' );
     });
 
-    cv.save().then(function(){
-        res.send('ok added : ' );
-    });
 
-    experience_pro.save().then(function(){
-        res.send('ok added : ' );
-    });
 
 });
 module.exports = router;
