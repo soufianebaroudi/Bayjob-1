@@ -1,7 +1,8 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var CV = sequelize.define('CV', {
-    titre: DataTypes.STRING
+    titre: DataTypes.STRING,
+    resume: DataTypes.TEXT
   }, {
     classMethods: {
       associate: function(models) {
