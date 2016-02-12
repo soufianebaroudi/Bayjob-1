@@ -4,6 +4,8 @@ module.exports = function(sequelize, DataTypes) {
     entreprise: DataTypes.STRING,
     poste: DataTypes.STRING,
     duree: DataTypes.STRING,
+    datedebut:DataTypes.DATE,
+    datefin:DataTypes.DATE,
     ville: DataTypes.STRING
   }, {
     classMethods: {
