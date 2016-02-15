@@ -2,7 +2,7 @@
 module.exports = function(sequelize, DataTypes) {
   var CV = sequelize.define('CV', {
     titre: DataTypes.STRING,
-    resume: DataTypes.TEXT
+    resume: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {

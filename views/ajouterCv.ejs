@@ -1,6 +1,6 @@
 <%- include('include/header-connect') %>
 
-<section  class="page-title cyan darken-1 white-text">
+<section class="page-title cyan darken-1 white-text" xmlns="http://www.w3.org/1999/html">
     <div class="container">
         <div class="row">
             <div id="logo-title" class="col s3 m1">
@@ -20,51 +20,130 @@
     <div class="container">
         <div class="row">
             <h2 style="text-align: center">Veuillez remplir le formulaire ci-aprés svp.</h2>
+
+            <!-- <h3 style="text-align: center">CV</h3>-->
+
             <div class="col s12 m7 offset-m2">
                 <form method="post" action="#">
-                        <h3 style="text-align: center">CV</h3>
-                    <input type="text" name="titre" placeholder="Titre du CV">
                     <div class="input-field col s12">
-                        <textarea id="resumecv" class="materialize-textarea" length="120"></textarea>
+                        <input name="titre" type="text" length="255">
+                        <label for="titre">Titre du CV</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea name="resumecv" class="materialize-textarea" length="255  "></textarea>
                         <label for="resumecv">Résumé du CV</label>
                     </div>
-                        <h3 style="text-align: center">Formation</h3>
-                    <input type="text" name="IntituleDiplome" placeholder="Intitulé du diplôme passé">
-                    <input type="text" name="mention" placeholder="Mention">
-                    <input type="number" name="annee" placeholder="Année">
-
+                    </br>
+                    </br>
+                    </br>
+                    <!--    <h3 style="text-align: center">Formation</h3> -->
+                    <div class="input-field col s12">
+                        <input name="IntituleDiplome" type="text" length="255">
+                        <label for="IntituleDiplome">Intitulé du diplôme passé</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input name="mention" type="text" length="255">
+                        <label for="mention">Mention</label>
+                    </div>
+                    
+                    <div class="input-field col s12">
+                        <input name="annee" type="number" length="255">
+                        <label for="annee">Annee</label>
+                    </div>
                     <p>
                         <input type="checkbox" id="encours" />
                         <label for="encours">En cours?</label>
                     </p>
+                    <div class="input-field col s12">
+                        <input name="etablissement" type="text" length="255">
+                        <label for="etablissement">Etablissement</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input name="VilleDi" type="text" length="255">
+                        <label for="VilleDi">Ville</label>
+                    </div>
+                    </br>
+                    </br>
+                    </br>
+                    <!--     <h3 style="text-align: center">Expérience Pro</h3> -->
+                    <div class="input-field col s12">
+                        <input name="entreprise" type="text" length="255">
+                        <label for="entreprise">Entreprise</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <select>
+                            <option value="" disabled selected>Type de contrat</option>
+                            <option value="1">CDD</option>
+                            <option value="2">CDI</option>
+                            <option value="3">Apprentissage</option>
+                        </select>
+                    </div>
+                    <div class="input-field col s12">
+                        <input name="poste" type="text" length="255">
+                        <label for="poste">Poste</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input name="duree" type="text" length="255">
+                        <label for="duree">Duree</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input name="datedebut" type="date" length="255">
+                        <label for="datedebut">Date de début</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input name="datefin" type="date" length="255">
+                        <label for="datefin">Date de fin</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input name="villeXp" type="text" length="255">
+                        <label for="villeXp">Ville</label>
+                    </div>
+                    </br>
+                    </br>
+                    </br>
+                    <!--    <h3 style="text-align: center">Missions</h3> -->
+                    <div class="input-field col s12">
+                        <input name="intituleMission" type="text" length="255">
+                        <label for="intituleMission">Intitulé de la mission</label>
+                    </div>
+                    </br>
+                    </br>
+                    </br>
+                    <!--     <h3 style="text-align: center">Competences</h3> -->
+                    <div class="input-field col s12">
+                        <input name="intituleCompetence" type="date" length="50">
+                        <label for="intituleCompetence">Intitulé de la compétence</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input name="niveauCompetence" type="text" length="1">
+                        <label for="niveauCompetence">Niveau de maitrise de la compétence</label>
+                    </div>
+                    </br>
+                    </br>
+                    </br>
+                     <!--    <h3 style="text-align: center">Langue</h3> -->
+                    <div class="input-field col s12">
+                        <input name="denominationLangue" type="date" length="50">
+                        <label for="denominationLangue">Langue</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input name="niveauLangue" type="text" length="1">
+                        <label for="niveauLangue">Niveau de maitrise de la Langue</label>
+                    </div>
+                    </br>
+                    </br>
+                    </br>
+                     <!--    <h3 style="text-align: center">Centres d'interêt</h3> -->
+                    <div class="input-field col s12">
+                        <input name="intituleInteret" type="text" length="1">
+                        <label for="intituleInteret">Intitulé centre interet</label>
+                    </div>
 
-                    <input type="text" name="etablissement"  placeholder="Etablissement">
-                    <input type="text" name="VilleDi" placeholder="Ville">
-                        <h3 style="text-align: center">Expérience Pro</h3>
-                    <input type="text" name="entreprise" placeholder="Entreprise">
-                    <select>
-                        <option value="" disabled selected>Type de contrat</option>
-                        <option value="1">CDD</option>
-                        <option value="2">CDI</option>
-                        <option value="3">Apprentissage</option>
-                    </select>
-                    <input type="text" name="poste" placeholder="Poste">
-                    <input type="text" name="duree" placeholder="Duree">
-                    <input type="text" name="datedebut" placeholder="Date de début">
-                    <input type="text" name="datefin" placeholder="Date de fin">
-                    <input type="text" name="villeXp" placeholder="Ville">
-                        <h3 style="text-align: center">Missions</h3>
-                    <input type="text" name="intituleMission" placeholder="Intitulé de la mission">
-                        <h3 style="text-align: center">Competences</h3>
-                    <input type="text" name="intituleCompetence" placeholder="Intitulé de la compétence">
-                    <input type="text" name="niveauCompetence" placeholder="Niveau de maitrise de la compétence">
-                        <h3 style="text-align: center">Langue</h3>
-                    <input type="text" name="denominationLangue" placeholder="Langue">
-                    <input type="text" name="niveauLangue" placeholder="Niveau de langue">
-                        <h3 style="text-align: center">Centres d'interêt</h3>
-                    <input type="text" name="intituleInteret" placeholder="Intitulé">
-
-                    <input type="submit">
+                    <div class="row" >
+                        <button class="btn waves-effect waves-light blue-grey darken-1" type="submit" name="valider">Valider
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
