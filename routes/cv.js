@@ -19,8 +19,11 @@ router.get('/:idCv', function(req, res, next) {
               {model: models.Formation}
               ]
   }).then(function(cv){
-    console.log(JSON.stringify(cv))
-    res.render('cv', { title: 'CV', cv: cv});
+    console.log(JSON.stringify(cv));
+
+    //Liste des mois
+      var mois = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+    res.render('cv', { title: 'CV', cv: cv, mois: mois});
   });
 
 
