@@ -4,6 +4,7 @@
 var models  = require('../models');
 var express = require('express');
 var session = require('express-session');
+var crypto = require('crypto');
 var router = express.Router();
 
 var sess;
@@ -15,33 +16,20 @@ router.get('/', function(req, res, next) {
 
 /* Action exécutée lorsque l'utilisateur se connecte */
 router.post('/', function (req, res) {
-  /*models.Candidat.findOne({
-    where:{mail: 'a.lecoustre@gmail.com'},
-    attributes: ['id']
-  }).then(function(candidat) {
-    //res.send(candidat.id);
-    console.log(candidat);
-  });*/
+  models.Utilisateur.findOne({
+    where:{mail: req.body.email}
+  }).then(function(utilisateur) {
+    if(utilisateur && req.body.email === utilisateur.mail && req.body.mdp === utilisateur.mdp){
+      req.session.user = utilisateur.mail;
+      req.session.type = utilisateur.type;
 
-    console.log(checkExistCandidat());
-    res.render('login', {title: 'Connexion'});
-
-});
-
-function checkExistCandidat(){
-  models.Candidat.count({
-    where:{mail: 'a.lecoustre@gmail.com'}
-  }).then(function(result){
-    if(result > 0){
-      return "vrai";
+      //TEST
+      console.log(crypto.createHash('md5').update(utilisateur.mdp).digest("hex"));
+      res.send("login success!");
     }else{
-      return "faux";
+      res.send('login failed');
     }
   });
-};
 
-var checkPasswordCandidat = function(){
-
-};
-
+});
 module.exports = router;
