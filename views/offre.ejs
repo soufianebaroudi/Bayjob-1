@@ -52,40 +52,14 @@
 
                                 <%=offre.resume%>
 
-                                <h4>Compétences</h4>
-                                <table>
-                                    <tbody>
-                                    <% for(var i = 0; i < offre.Competence.length; i++) { %>
-                                    <tr>
-                                        <td><%= offre.Competence[i].intitule %></td>
 
-                                    </tr>
-                                    <% } %>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </li>
                     <li>
                         <div class="collapsible-header"><i class="material-icons">school</i>Formation</div>
                         <div class="collapsible-body">
-                            <div class="container">
 
-                                <% for(var i = 0; i < cv.Formations.length; i++) { %>
-                                <div class="row"
-                                     style="border-bottom: 1px solid #ddd; padding-bottom: 20px; padding-top: 20px">
-                                    <div class="col s12 m2">
-                                        <%= cv.Formations[i].annee %>
-                                    </div>
-                                    <div class="col s12 m10">
-                                        <strong><%= cv.Formations[i].intitule_diplome %></strong><br/>
-                                        <%= cv.Formations[i].etablissement %> - <%= cv.Formations[i].ville %><br/>
-                                        Mention <%= cv.Formations[i].mention %>
-                                    </div>
-                                </div>
-
-                                <% } %>
-                            </div>
                         </div>
                     </li>
                     <li>
@@ -93,74 +67,19 @@
                             professionnelles
                         </div>
                         <div class="collapsible-body">
-                            <div class="container">
 
-                                <% for(var i = 0; i < cv.Experience_pros.length; i++) { %>
-                                <div class="row"
-                                     style="border-bottom: 1px solid #ddd; padding-bottom: 20px; padding-top: 20px">
-                                    <div class="col s12 m2">
-                                        <%- mois[cv.Experience_pros[i].datedebut.getMonth()] + " " + cv.Experience_pros[i].datedebut.getFullYear() + " - " + mois[cv.Experience_pros[i].datefin.getMonth()] + " " + cv.Experience_pros[i].datefin.getFullYear()%>
-                                    </div>
-                                    <div class="col s12 m10">
-                                        <strong><%= cv.Experience_pros[i].poste %></strong><br/>
-                                        <%= cv.Experience_pros[i].entreprise %> - <%= cv.Experience_pros[i].ville %>
-                                        <br/>
-                                        Type de contrat : <%= cv.Experience_pros[i].Contrat_type.intitule %>
-                                        <br/><br/>
-                                        Mission(s) :
-                                        <ul>
-                                            <% for(var j = 0; j < cv.Experience_pros[i].Mission_CVs.length; j++) { %>
-                                            <li><%= cv.Experience_pros[i].Mission_CVs[j].intitule %></li>
-                                            <% } %>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <% } %>
-                            </div>
                         </div>
                     </li>
                     <li>
                         <div class="collapsible-header"><i class="material-icons">chat</i>Langues</div>
                         <div class="collapsible-body">
-                            <div class="container">
 
-                                <table>
-                                    <tbody>
-                                    <% for(var i = 0; i < cv.Langues.length; i++) { %>
-                                    <tr>
-                                        <td><%= cv.Langues[i].intitule %></td>
-                                        <td>
-                                            <% for(var j = 0; j < 5;j++){
-                                            if(j < cv.Langues[i].niveau){ %>
-                                            <i class="material-icons">star</i>
-                                            <% }else{ %>
-                                            <i class="material-icons">star_border</i>
-                                            <% }
-                                            } %>
-                                        </td>
-                                    </tr>
-                                    <% } %>
-                                    </tbody>
-                                </table>
-                            </div>
                         </div>
                     </li>
                     <li>
                         <div class="collapsible-header"><i class="material-icons">public</i>Centres d'intérêt</div>
                         <div class="collapsible-body">
-                            <div class="container">
 
-                                <table>
-                                    <tbody>
-                                    <% for(var i = 0; i < cv.Centre_interets.length; i++) { %>
-                                    <tr>
-                                        <td><%= cv.Centre_interets[i].intitule %></td>
-                                    </tr>
-                                    <% } %>
-                                    </tbody>
-                                </table>
-                            </div>
                         </div>
                     </li>
                 </ul>
