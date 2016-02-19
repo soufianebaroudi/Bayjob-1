@@ -15,7 +15,6 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Candidat.hasMany(models.CV);
-        Candidat.belongsTo(models.Utilisateur);
       }
     }
   });
