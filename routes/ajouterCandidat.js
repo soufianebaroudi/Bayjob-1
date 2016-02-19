@@ -27,15 +27,13 @@ router.post('/', function(req, res, next) {
         ville: req.body.villeCandidat,
         cp: req.body.cpCandidat,
         pays: req.body.paysCandidat,
-        mobilite: req.body.mobiliteCandidat,
-        UtilisateurId: utilisateur.id
+        mobilite: req.body.mobiliteCandidat
     });
 
-    utilisateur.save().then(function() {
-        res.render('sudcsc');
-    })
+    utilisateur.save();
 
     candidat.save().then(function() {
+        utilisateur.setCandidat(candidat);
         res.render('login', { title:'Page de connexion', email: utilisateur.mail, mdp : utilisateur.mdp});
         //res.send('ok added : ' + candidat.nom);
     })
