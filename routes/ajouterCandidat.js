@@ -10,6 +10,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
+
+    var utilisateur = models.Utilisateur.build({
+        mail: req.body.mailCandidat,
+        mdp: req.body.mdpCandidat,
+        type: "C"
+    });
+
     var candidat = models.Candidat.build({
         nom: req.body.nomCandidat,
         prenom: req.body.prenomCandidat,
@@ -20,13 +27,14 @@ router.post('/', function(req, res, next) {
         ville: req.body.villeCandidat,
         cp: req.body.cpCandidat,
         pays: req.body.paysCandidat,
-        mobilite: req.body.mobiliteCandidat,
-        mail: req.body.mailCandidat,
-        mdp: req.body.mdpCandidat
+        mobilite: req.body.mobiliteCandidat
     });
 
+    utilisateur.save();
+
     candidat.save().then(function() {
-        res.render('login', { title:'Page de connexion', email: candidat.mail, mdp : candidat.mdp});
+        utilisateur.setCandidat(candidat);
+        res.render('login', { title:'Page de connexion', email: utilisateur.mail, mdp : utilisateur.mdp});
         //res.send('ok added : ' + candidat.nom);
     })
 });
