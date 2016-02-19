@@ -28,8 +28,8 @@ router.post('/', function(req, res, next) {
         cp: req.body.cpCandidat,
         pays: req.body.paysCandidat,
         mobilite: req.body.mobiliteCandidat,
-        UtilisateurId: utilisateur.id
     });
+    candidat.setUtilisateur(utilisateur);
 
     utilisateur.save().then(function() {
         res.render('sudcsc');
