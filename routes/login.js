@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
   //req.session.test = "blablabla";
 });
 
-/* Action exécutée lorsque l'utilisateur se connecte */
+/* Action executee lorsque l'utilisateur se connecte */
 router.post('/', function (req, res) {
   models.Utilisateur.findOne({
     where:{mail: req.body.email}

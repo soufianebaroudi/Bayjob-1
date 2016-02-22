@@ -22,7 +22,7 @@ router.get('/:idCv', function(req, res, next) {
     console.log(JSON.stringify(cv));
 
     //Liste des mois
-      var mois = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+      var mois = ["Janvier","FÃ©vrier","Mars","Avril","Mai","Juin","Juillet","AoÃ»t","Septembre","Octobre","Novembre","DÃ©cembre"];
     res.render('cv', { title: 'CV', cv: cv, mois: mois});
   });
 
