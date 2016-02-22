@@ -14,61 +14,122 @@
     </div>
 </section>
 
-<form method="post" action="/ajouterOffre">
-    <input type="text" name="titre" placeholder="Titre ">
-    <input type="text" name="xpRequise" placeholder="Experience requise">
-    <input type="text" name="tempDeTravail" placeholder="Temps de travail">
-    <input type="text" name="resume" placeholder="Résumé">
-    <input type="text" name="salaire" placeholder="Salaire">
-    <input type="text" name="ville" placeholder="Ville">
-    <input type="text" name="mail" placeholder="Mail">
-    <input type="date" name="dateEmission" class="datepicker" placeholder="Date Emission">
+<section class="page-content" id="ajouterRecruteur">
 
-    <div class="switch ">
-        <h5>Adapté aux handicaps</h5>
-        <label>
 
-            Off
-            <input type="checkbox" name="handicap">
-            <span class="lever"></span>
-            On
-        </label>
+    <div class="container">
+
+        <form class="col s12 m8 offset-m3" action="/ajouterOffre" method="post">
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="titre" type="text" name="titre" class="validate">
+                <label for="titre">Titre de l'offre</label>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">phone</i>
+                <input id="xpRequise" type="text" name="xpRequise" class="validate">
+                <label for="xpRequise">Expérience requise</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="tempDeTravail" type="text" name="tempDeTravail" class="validate">
+                <label for="tempDeTravail">Durée</label>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">phone</i>
+                <input id="resume" type="text" name="resume" class="validate">
+                <label for="resume">Résumé</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="salaire" type="text" name="salaire" class="validate">
+                <label for="salaire">Salaire</label>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">phone</i>
+                <input id="ville" type="text" name="ville" class="validate">
+                <label for="ville">Ville</label>
+            </div>
+        </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="mail" type="email" name="mail" class="validate">
+                    <label for="mail">Mail</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">phone</i>
+                    <input id="ville" type="date" name="dateEmission" class="datepicker">
+                    <label for="ville">Date Emission</label>
+                </div>
+            </div>
+
+            <div class="input-field col s12">
+                <select name="contrat">
+                    <option value="" disabled selected>Contrat</option>
+                    <%
+                    for(var i = 0; i<contrat.length; i++) {%>
+                    <option value="<%=contrat[i].id%>"><%=contrat[i].intitule%></option>
+                    <%}%>
+                </select>
+            </div>
+
+            <div class="input-field col s12">
+                <select name="niveau">
+                    <option value="" disabled selected>Niveau d'études</option>
+                    <%
+                    for(var i = 0; i<NiveauEtud.length; i++) {%>
+                    <option value="<%=NiveauEtud[i].id%>"><%=NiveauEtud[i].intitule%></option>
+                    <%}%>
+
+                </select>
+            </div>
+
+
+            <div class="input-field col s12">
+                <select name="departement">
+                    <option value="" disabled selected>Departement</option>
+                    <%
+                    for(var i = 0; i<Departement.length; i++) {%>
+                    <option value="<%=Departement[i].id%>"><%=Departement[i].intitule%></option>
+                    <%}%>
+                </select>
+            </div>
+
+            <br>
+            <div class="switch ">
+                <h5>Adapté aux handicaps</h5>
+                <label>
+
+                    Off
+                    <input type="checkbox" name="handicap">
+                    <span class="lever"></span>
+                    On
+                </label>
+            </div>
+
+            <br>
+
+            <center>
+
+                <div class="row">
+                    <button class="btn waves-effect waves-light blue-grey darken-1" type="submit" name="connexion">S'inscrire
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </center>
+        </form>
     </div>
 
-    <div class="input-field col s12">
-        <select name="niveau">
-            <option value="" disabled selected>Niveau d'études</option>
-            <%
-            for(var i = 0; i<NiveauEtud.length; i++) {%>
-            <option value="<%=NiveauEtud[i].id%>"><%=NiveauEtud[i].intitule%></option>
-            <%}%>
-
-        </select>
-    </div>
-
-    <div class="input-field col s12">
-        <select name="contrat">
-            <option value="" disabled selected>Contrat</option>
-            <%
-            for(var i = 0; i<contrat.length; i++) {%>
-            <option value="<%=contrat[i].id%>"><%=contrat[i].intitule%></option>
-            <%}%>
-        </select>
-    </div>
+</section>
 
 
-    <div class="input-field col s12">
-        <select name="departement">
-            <option value="" disabled selected>Departement</option>
-            <%
-            for(var i = 0; i<Departement.length; i++) {%>
-            <option value="<%=Departement[i].id%>"><%=Departement[i].intitule%></option>
-            <%}%>
-        </select>
-    </div>
-    <input type="submit">
-</form>
 
-<% contrat.id%> <br>
-<%contrat.intitule%>
 <%- include('include/footer') %>
