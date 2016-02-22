@@ -27,11 +27,8 @@ router.post('/', function(req, res, next) {
         ville: req.body.villeCandidat,
         cp: req.body.cpCandidat,
         pays: req.body.paysCandidat,
-        mobilite: req.body.mobiliteCandidat,
-
+        mobilite: req.body.mobiliteCandidat
     });
-    candidat.setUtilisateur(utilisateur);
-
     utilisateur.save();
 
     candidat.save().then(function() {
