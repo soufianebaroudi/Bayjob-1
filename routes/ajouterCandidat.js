@@ -6,9 +6,19 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-    res.render('ajouterCandidat', { title: 'Inscription d\'un Candidat ',  nom: null, prenom: null, dateNaissance: null,
-        telFixe: null, telMobile:null , adresse:null , ville: null, cp: null, pays:null , mobilite:null, mail: null,
-        mdp:null, errornum:null});
+    var Pays;
+
+    models.Pays.findAll({
+        attributes: ['id','intitule']
+    }).then(function(pays){
+        Pays = pays;
+        res.render('ajouterCandidat', { title: 'Inscription d\'un Candidat ',  nom: null, prenom: null, dateNaissance: null,
+            telFixe: null, telMobile:null , adresse:null , ville: null, cp: null, pays:Pays , mobilite:null, mail: null,
+            mdp:null, errornum:null});
+    });
+
+
+
 });
 
 router.post('/', function(req, res, next) {

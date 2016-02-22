@@ -6,7 +6,14 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-    res.render('ajouterCv', { title: 'AJout d\'un Cv'});
+    var Pays;
+
+    models.Pays.findAll({
+        attributes: ['id','intitule']
+    }).then(function(pays){
+        Pays = pays;
+        res.render('ajouterCv', { title: 'AJout d\'un Cv', pays:Pays});
+    });
 });
 
 router.post('/', function(req, res, next) {
@@ -24,6 +31,7 @@ router.post('/', function(req, res, next) {
     var posteentreprise = req.body.poste;
     var dureeposte = null;
     var villeposte = req.body.villeXp;
+    var paysposte = req.body.pays;
     var contrattypeid = req.body.contrattype;
 
     var intitulemission = req.body.intituleMission;
@@ -56,6 +64,7 @@ router.post('/', function(req, res, next) {
         poste: posteentreprise,
         duree: dureeposte,
         ville: villeposte,
+        Payid: paysposte,
         ContratTypeId: parseInt(contrattypeid), // to change
         CVId: cv.id
     });

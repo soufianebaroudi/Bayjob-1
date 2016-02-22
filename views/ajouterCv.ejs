@@ -100,6 +100,14 @@
                         <input name="villeXp" type="text" length="255">
                         <label for="villeXp">Ville</label>
                     </div>
+                    <div class="input-field col s12">
+                        <select name="pays">
+                            <option value="72" selected="selected">France </option>
+                            <% for(var i = 0; i<pays.length; i++) {%>
+                            <option value="<%=pays[i].id%>"><%=pays[i].intitule%></option>
+                            <%}%>
+                        </select>
+                    </div>
                     </br>
                     </br>
                     </br>
