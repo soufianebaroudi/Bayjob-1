@@ -14,6 +14,8 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Recruteur.hasMany(models.Offre);
+        Recruteur.belongsTo(models.Departement);
+        Recruteur.belongsTo(models.Pays);
       }
     }
   });
