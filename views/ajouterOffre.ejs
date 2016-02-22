@@ -8,7 +8,7 @@
     <input type="text" name="salaire" placeholder="Salaire">
     <input type="text" name="ville" placeholder="Ville">
     <input type="text" name="mail" placeholder="Mail">
-    <input type="date" name="dateEmission" class="datepicker">
+    <input type="date" name="dateEmission" class="datepicker" placeholder="Date Emission">
 
     <div class="switch ">
         <h5>Adapté aux handicaps</h5>
@@ -21,8 +21,31 @@
         </label>
     </div>
 
-    <br>
+    <div class="input-field col s12">
+        <select name="niveau">
+            <option value="" disabled selected>Niveau d'études</option>
+            <%
+            for(var i = 0; i<NiveauEtud.length; i++) {%>
+            <option value="<%=NiveauEtud[i].id%>"><%=NiveauEtud[i].intitule%></option>
+            <%}%>
+
+        </select>
+    </div>
+
+    <div class="input-field col s12">
+        <select name="contrat">
+            <option value="" disabled selected>Contrat</option>
+            <%
+            for(var i = 0; i<contrat.length; i++) {%>
+            <option value="<%=contrat[i].id%>"><%=contrat[i].intitule%></option>
+            <%}%>
+
+        </select>
+    </div>
 
     <input type="submit">
 </form>
+
+<% contrat.id%> <br>
+<%contrat.intitule%>
 <%- include('include/footer') %>

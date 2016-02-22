@@ -3,13 +3,50 @@
  */
 var models  = require('../models');
 var express = require('express');
+var session = require('express-session');
 var router = express.Router();
+var sess;
 
 router.get('/', function(req, res, next) {
-    res.render('ajouterOffre', { title: 'Inscription' });
+
+    var NiveauEtude;
+    models.Niveau_etude.findAll({
+
+        attributes: ['id', 'intitule']
+
+    }).then(function(NE){
+        NiveauEtude = NE;
+    });
+
+     models.Contrat_type.findAll({
+
+         attributes: ['id', 'intitule']
+         
+    }).then(function(contrat){
+
+         res.render('ajouterOffre', { title: 'Inscription' , contrat : contrat, NiveauEtud: NiveauEtude});
+    });
+
+
 });
 
 router.post('/', function(req, res, next) {
+
+// Recuperation de l'identifiant de l'utilisateur à partir de la session
+
+    var recId;
+    sess = req.session;
+    models.Recruteur.findOne({
+
+        where:{mail: sess.user}
+
+    }).then(function(rec){
+
+        recId = rec;
+        console.log(recId);
+    });
+
+    // Récupération des données envoyées via le formulaire
 
     var handicapBool = true;
     var titre = req.body.titre;
@@ -21,18 +58,21 @@ router.post('/', function(req, res, next) {
     var dateEmission = req.body.dateEmission;
     var handicap = req.body.handicap;
     var mail = req.body.mail;
+    var contrat = req.body.contrat;
+    var NE = req.body.niveau;
+
+
 
     if(handicap == "on") {
-
         handicapBool = true;
     } else {
-
-
         handicapBool = false;
-
     }
 
+    // Création de l'offre
+
     var offre = models.Offre.build({
+
         titre : titre,
         xpRequise : xpRequise,
         resume : resume,
@@ -41,16 +81,20 @@ router.post('/', function(req, res, next) {
         ville : ville,
         dateEmission : dateEmission,
         handicap : handicapBool,
-        mail : mail
-        // get idUser from session
-        // get type contrat ID
-        // get niveau etude ID
+        mail : mail,
+        ContratTypeId : contrat,
+        NiveauEtudeId : NE,
+        RecruteurId : recId
+
     });
 
+    // Insertion de l'offre
+
     offre.save().then(function() {
-        res.send('ok added : ' + offre.titre);
-        console.log(offre.handicap);
-        console.log(handicapBool);
+
+        offre.setRecruteur(recId);
+        res.send('ok added : ' + offre.titre + "  " + contrat);
+        console.log("après : " +recId);
     })
 });
 
