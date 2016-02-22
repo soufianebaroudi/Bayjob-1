@@ -10,6 +10,16 @@ var sess;
 router.get('/', function(req, res, next) {
 
     var NiveauEtude;
+    var Departement;
+
+    models.Departement.findAll({
+
+        attributes: ['id', 'intitule']
+
+    }).then(function(departement){
+        Departement = departement;
+    });
+
     models.Niveau_etude.findAll({
 
         attributes: ['id', 'intitule']
@@ -24,15 +34,14 @@ router.get('/', function(req, res, next) {
          
     }).then(function(contrat){
 
-         res.render('ajouterOffre', { title: 'Inscription' , contrat : contrat, NiveauEtud: NiveauEtude});
+         res.render('ajouterOffre', { title: 'Ajoutez votre offre' , contrat : contrat, NiveauEtud: NiveauEtude, Departement : Departement});
     });
-
 
 });
 
 router.post('/', function(req, res, next) {
 
-// Recuperation de l'identifiant de l'utilisateur à partir de la session
+// Recuperation de l'identifiant du recruteur à partir de la session
 
     var recId;
     sess = req.session;
@@ -60,6 +69,7 @@ router.post('/', function(req, res, next) {
     var mail = req.body.mail;
     var contrat = req.body.contrat;
     var NE = req.body.niveau;
+    var dep = req.body.departement;
 
 
 
@@ -84,7 +94,7 @@ router.post('/', function(req, res, next) {
         mail : mail,
         ContratTypeId : contrat,
         NiveauEtudeId : NE,
-        RecruteurId : recId
+        DepartementId : dep
 
     });
 

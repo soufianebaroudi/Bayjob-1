@@ -1,5 +1,19 @@
 <%- include('include/header-connect') %>
 
+<section  class="page-title cyan darken-1 white-text">
+    <div class="container">
+        <div class="row">
+            <div id="logo-title" class="col s3 m1">
+                <i class="medium material-icons">perm_identity</i>
+            </div>
+
+            <div class="col s9 m8">
+                <h3><%=title%></h3>
+            </div>
+        </div>
+    </div>
+</section>
+
 <form method="post" action="/ajouterOffre">
     <input type="text" name="titre" placeholder="Titre ">
     <input type="text" name="xpRequise" placeholder="Experience requise">
@@ -39,10 +53,19 @@
             for(var i = 0; i<contrat.length; i++) {%>
             <option value="<%=contrat[i].id%>"><%=contrat[i].intitule%></option>
             <%}%>
-
         </select>
     </div>
 
+
+    <div class="input-field col s12">
+        <select name="departement">
+            <option value="" disabled selected>Departement</option>
+            <%
+            for(var i = 0; i<Departement.length; i++) {%>
+            <option value="<%=Departement[i].id%>"><%=Departement[i].intitule%></option>
+            <%}%>
+        </select>
+    </div>
     <input type="submit">
 </form>
 
