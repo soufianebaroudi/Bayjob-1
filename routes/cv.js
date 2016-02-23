@@ -8,7 +8,6 @@ var router = express.Router();
 /* GET home page. */
 router.get('/:idCv', function(req, res, next) {
 
-
   models.CV.findOne({
     where:{id: req.params.idCv},
     include:[{model: models.Competence_CV},
@@ -22,22 +21,9 @@ router.get('/:idCv', function(req, res, next) {
     console.log(JSON.stringify(cv));
 
     //Liste des mois
-      var mois = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
-    res.render('cv', { title: 'CV', cv: cv, mois: mois});
+      var mois = ["Janvier","FÃ©vrier","Mars","Avril","Mai","Juin","Juillet","AoÃ»t","Septembre","Octobre","Novembre","DÃ©cembre"];
+    res.render('cv', { title: 'CV', cv: cv, mois: mois, session: req.session});
   });
-
-
-
-
-  /*models.CV.findById(req.params.idCv).then(function(cv){
-    models.CV.findById(cv.CandidatId).then(function(candidat){
-      nom =candidat.nom;
-      res.render('cv', { title: 'CV' });
-    });
-
-  });*/
-
-
 });
 
 module.exports = router;
