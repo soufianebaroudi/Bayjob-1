@@ -11,8 +11,7 @@ var sess;
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   req.session.destroy();
-  res.redirect('index');
+  res.render('index', { title: 'Bayjob' });
 });
-
 
 module.exports = router;
