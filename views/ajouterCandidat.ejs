@@ -72,12 +72,21 @@
                     <input type="text" name="cpCandidat" placeholder="Code Postal">
                     <% } %>
 
-                    <select name="pays">
+                    <select id="select_pays" name="pays">
                         <option value="72" selected="selected">France </option>
                         <% for(var i = 0; i<pays.length; i++) {%>
                         <option value="<%=pays[i].id%>"><%=pays[i].intitule%></option>
                         <%}%>
                     </select>
+
+                    <div id="select_departement">
+                        <select  name="dep">
+                            <% for(var i = 0; i<departement.length; i++) {%>
+                            <option value="<%=departement[i].id%>"><%=departement[i].intitule%></option>
+                            <%}%>
+                        </select>
+                    </div>
+
 
                     <% if (mobilite != null) { %>
                     <input value="<%=mobilite%>" type="text" name="mobiliteCandidat" >

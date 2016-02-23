@@ -29,7 +29,6 @@
                         <input name="titre" type="text" length="255">
                         <label for="titre">Titre du CV</label>
                     </div>
-
                     <div class="input-field col s12">
                         <textarea name="resumecv" class="materialize-textarea" length="255  "></textarea>
                         <label for="resumecv">Résumé du CV</label>
@@ -117,11 +116,23 @@
                     <div class="input-field col s12">
                         <input name="intituleMission" type="text" length="255">
                         <label for="intituleMission">Intitulé de la mission</label>
+
+                    </div>
+                    <script type="text/javascript" >
+                        var div = document.getElementById('test');
+                        function addField() {
+                            div.innerHTML += '<div class="input-field col s12"> <input name="intituleMission+" type="text" length="255">'+
+                                    '<label for="intituleMission+">Intitulé de la mission</label> </div>';
+                        }
+                    </script>
+
+                    <div class="input-field col s12" >
+                        <button type="button" onclick="addField()" >+</button>
                     </div>
                     </br>
                     </br>
                     </br>
-                    <div class="col s12 m7 offset-m2">
+                    <div class="col s12 m7 offset-m2 ">
                         <h3 style="text-align: center">Competences</h3>
                     </div>
                     <div class="input-field col s12">
@@ -164,15 +175,7 @@
                     </div>
 
 
-                    <script type="text/javascript" >
-                        var div = document.getElementById('test');
-                        function addField() {
-                            div.innerHTML += '<input type="text" name="test1" />' +
-                                    '<input type="text" name="test2" />' +
-                                    '<input type="text" name="test3" />';
-                        }
-                    </script>
-                    <button type="button" onclick="addField()" >+</button>
+
                 </form>
             </div>
         </div>
