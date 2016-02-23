@@ -32,10 +32,17 @@
 
                     </div>
 
-                    <div class="input-field col s12">
+                    <div id="locationField" class="input-field col s12">
                         <p>Lieu du poste</p>
-                        <input placeholder="Pays, région, département ou ville" name="lieu" type="text" class="validate">
+                        <input id="autocomplete" placeholder="Pays, région, département ou ville" onFocus="geolocate()" name="lieu" type="text" class="validate">
 
+                    </div>
+
+                    <div id="address">
+                        <input type="hidden" name="ville" id="locality" disabled="true"/>
+                        <input type="hidden" name="region" id="administrative_area_level_1" disabled="true"/>
+                        <input type="hidden" name="departement" id="administrative_area_level_2" disabled="true"/>
+                        <input type="hidden" name="pays" id="country" disabled="true"/>
                     </div>
 
                     <div class="input-field col s12">
@@ -119,6 +126,10 @@
 
 
 </section>
+
+<script src="/js/autocomplete-gmap.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvTewOiQvvKOS9RNOjYIN-qgE9NrcSKy4&signed_in=true&libraries=places&callback=initAutocomplete"
+        async defer></script>
 
 
 <%- include('include/footer') %>
