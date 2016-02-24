@@ -11,23 +11,47 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
 
+    var   nomRecruteur = req.body.nomRecruteur;
+    var   prenomRecruteur = req.body.prenomRecruteur;
+    var   nomEntreprise = req.body.nomEntreprise;
+    var   adresse = req.body.adresse;
+    var   ville = req.body.ville;
+    var   cp = req.body.cp;
+    var   pays = req.body.pays;
+    var   telFixe = req.body.telFixe;
+    var   telMobile = req.body.telMobile;
+    var   mail = req.body.mail;
+    var   mdp = req.body.mdp;
+
     var recruteur = models.Recruteur.build({
 
-        nomRecruteur : req.body.nomRecruteur,
-        prenomRecruteur : req.body.prenomRecruteur,
-        nomEntreprise : req.body.nomEntreprise,
-        adresse : req.body.adresse,
-        ville : req.body.ville,
-        cp : req.body.cp,
-        pays : req.body.pays,
-        telFixe : req.body.telFixe,
-        telMobile : req.body.telMobile,
-        mail : req.body.mail,
-        mdp : req.body.mdp
+        nomRecruteur : nomRecruteur,
+        prenomRecruteur : prenomRecruteur,
+        nomEntreprise : nomEntreprise,
+        adresse : adresse,
+        ville : ville,
+        cp : cp,
+        pays : pays,
+        telFixe : telFixe,
+        telMobile : telMobile,
+        mail : mail,
+        mdp : mdp
+
     });
 
+    var utilisateur = models.Utilisateur.build({
+
+        mail: mail,
+        mdp: mdp,
+        type : "R"
+    })
+
     recruteur.save().then(function() {
-        res.send('ok added : ' + recruteur.nomRecruteur);
+       // res.send('ok added : ' + recruteur.nomRecruteur);
+    })
+
+    utilisateur.save().then(function() {
+        res.send('ok added : ' + recruteur.nomRecruteur + 'mail : ' + utilisateur.mail);
     })
 });
 module.exports = router;

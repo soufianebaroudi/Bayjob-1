@@ -1,5 +1,19 @@
 <%- include('include/header-connect') %>
 
+<section  class="page-title cyan darken-1 white-text">
+    <div class="container">
+        <div class="row">
+            <div id="logo-title" class="col s3 m1">
+                <i class="medium material-icons">perm_identity</i>
+            </div>
+
+            <div class="col s9 m8">
+                <h3><%=title%></h3>
+            </div>
+        </div>
+    </div>
+</section>
+
 <form method="post" action="/ajouterOffre">
     <input type="text" name="titre" placeholder="Titre ">
     <input type="text" name="xpRequise" placeholder="Experience requise">
@@ -8,7 +22,7 @@
     <input type="text" name="salaire" placeholder="Salaire">
     <input type="text" name="ville" placeholder="Ville">
     <input type="text" name="mail" placeholder="Mail">
-    <input type="date" name="dateEmission" class="datepicker">
+    <input type="date" name="dateEmission" class="datepicker" placeholder="Date Emission">
 
     <div class="switch ">
         <h5>Adapté aux handicaps</h5>
@@ -21,8 +35,40 @@
         </label>
     </div>
 
-    <br>
+    <div class="input-field col s12">
+        <select name="niveau">
+            <option value="" disabled selected>Niveau d'études</option>
+            <%
+            for(var i = 0; i<NiveauEtud.length; i++) {%>
+            <option value="<%=NiveauEtud[i].id%>"><%=NiveauEtud[i].intitule%></option>
+            <%}%>
 
+        </select>
+    </div>
+
+    <div class="input-field col s12">
+        <select name="contrat">
+            <option value="" disabled selected>Contrat</option>
+            <%
+            for(var i = 0; i<contrat.length; i++) {%>
+            <option value="<%=contrat[i].id%>"><%=contrat[i].intitule%></option>
+            <%}%>
+        </select>
+    </div>
+
+
+    <div class="input-field col s12">
+        <select name="departement">
+            <option value="" disabled selected>Departement</option>
+            <%
+            for(var i = 0; i<Departement.length; i++) {%>
+            <option value="<%=Departement[i].id%>"><%=Departement[i].intitule%></option>
+            <%}%>
+        </select>
+    </div>
     <input type="submit">
 </form>
+
+<% contrat.id%> <br>
+<%contrat.intitule%>
 <%- include('include/footer') %>
