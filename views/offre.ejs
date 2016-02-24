@@ -42,46 +42,75 @@
                     <li>
                         <div class="collapsible-header active"><i class="material-icons">description</i>Description
                             générale
-                            <h5><%= offre.ville %></h5>
-                            <h5><%= offre.dateEmission%></h5>
+
+
 
                         </div>
                         <div class="collapsible-body">
                             <div class="container">
-                                <h4>Résumé</h4>
+                                <h4>Competence</h4>
 
-                                <%=offre.resume%>
-
-
+                                <table>
+                                    <tbody>
+                                    <% for(var i = 0; i < offre.Competence_offres.length; i++) { %>
+                                    <tr>
+                                        <td><%= offre.Competence_offres[i].intitule %></td>
+                                        <td>
+                                            <% for(var j = 0; j < 5;j++){
+                                            if(j < offre.Competence_offres[i].niveau){ %>
+                                            <i class="material-icons">star</i>
+                                            <% }else{ %>
+                                            <i class="material-icons">star_border</i>
+                                            <% }
+                                            } %>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">school</i>Formation</div>
+                        <div class="collapsible-header"><i class="material-icons">school</i>Mission offre</div>
                         <div class="collapsible-body">
+                            <table>
+                                <tbody>
+                                <% for(var i = 0; i < offre.Mission_offres.length; i++) { %>
+                                <tr>
+                                    <td><%= offre.Mission_offres[i].intitule %></td>
+
+                                </tr>
+                                <% } %>
+                                </tbody>
+                            </table>
+
 
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">work</i>Expériences
-                            professionnelles
+                        <div class="collapsible-header"><i class="material-icons">work</i>Résumé
+
                         </div>
                         <div class="collapsible-body">
+                            <h4>Résumé</h4>
+                            <%=offre.resume%>
+                            <h4>Temps de  travail</h4>
+                            <%=offre.tempDeTravail%>
+                            <h4> Lieux</h4>
+                            <%=offre.ville%>
+                            <h4>salaire</h4>
+                            <%=offre.salaire%>
+
+
 
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">chat</i>Langues</div>
-                        <div class="collapsible-body">
 
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">public</i>Centres d'intérêt</div>
-                        <div class="collapsible-body">
 
-                        </div>
                     </li>
+
                 </ul>
 
             </div>
