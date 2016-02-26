@@ -10,17 +10,17 @@ var router = express.Router();
 var sess;
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('login', {title: 'Connexion'});
+  res.render('login', {title: 'Connexion',email:null,mdp:null});
   //req.session.test = "blablabla";
 });
 
-/* Action exécutée lorsque l'utilisateur se connecte */
+/* Action exï¿½cutï¿½e lorsque l'utilisateur se connecte */
 router.post('/', function (req, res) {
   models.Utilisateur.findOne({
     where:{mail: req.body.email}
   }).then(function(utilisateur) {
     if(utilisateur && req.body.email === utilisateur.mail && req.body.mdp === utilisateur.mdp){
-      req.session.user = utilisateur.mail;
+      req.session.user = utilisateur.id;
       req.session.type = utilisateur.type;
 
       //TEST
