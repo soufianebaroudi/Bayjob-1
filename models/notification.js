@@ -2,7 +2,8 @@
 module.exports = function(sequelize, DataTypes) {
   var Notification = sequelize.define('Notification', {
     utilisateurSession: DataTypes.STRING,
-    accepte:DataTypes.BOOLEAN
+    choix:DataTypes.BOOLEAN,
+    reponse:DataTypes.BOOLEAN
   }, {
     classMethods: {
       associate: function(models) {
