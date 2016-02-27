@@ -23,11 +23,11 @@
             <!------------------------------------------------------------------------------------------->
 
             <!-- Vérification si l'utilisateur est connecté -->
-            <% if(utilisateurConnecte != null){
+            <% if(session.user != null){
 
             /*Vérification si l'utilisateur connecté est l'auteur du CV : si c'est le cas, on fait apparaitre
               un bouton de modification du CV au lieu des boutons de validation*/
-            if(cv.Candidat.UtilisateurId === utilisateurConnecte.id){ %>
+            if(cv.Candidat.UtilisateurId === session.user){ %>
             <div class="col s6 m2">
                 <p class="center-align">
 
@@ -39,8 +39,8 @@
             </div>
 
             <!-- si l'utilisateur est un recruteur (différent d'un candidat) on affichage les boutons de validation -->
-            <% }else if(utilisateurConnecte.type != "C"){ %>
-            <input type="hidden" name="utilisateurSession" value="<%= utilisateurConnecte.id %>">
+            <% }else if(session.type != "C"){ %>
+            <input type="hidden" name="utilisateurSession" value="<%= session.user %>">
             <input type="hidden" name="CVId" value="<%= cv.id %>">
             <div class="col s6 m1">
                 <p class="center-align">
