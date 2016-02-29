@@ -44,19 +44,26 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//Gestion des sessions
 app.use(session({
   secret: '2C44-4D44-WppQ38S',
   resave: true,
   saveUninitialized: true
 }));
 
+var test = function(req, res, next){
+  console.log("test");
+  return next();
+};
+
 // Authentication and Authorization Middleware
-var auth = function(req, res, next) {
-  if (req.session && req.session.user === "amy" && req.session.admin)
+/*var auth = function(req, res, next) {
+  if (req.session && req.session.user)
     return next();
   else
     return res.sendStatus(401);
-};
+};*/
 
 app.use('/', routes);
 app.use('/users', users);
