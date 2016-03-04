@@ -44,10 +44,11 @@ router.post('/', function(req, res, next) {
 // Recuperation de l'identifiant du recruteur à partir de la session
 
     var recId;
+    var ttt;
     sess = req.session;
     models.Recruteur.findOne({
 
-        where:{mail: sess.user}
+        include : {model : models.Utilisateur, where : {id : sess.user}}
 
     }).then(function(rec){
 
@@ -70,7 +71,6 @@ router.post('/', function(req, res, next) {
     var contrat = req.body.contrat;
     var NE = req.body.niveau;
     var dep = req.body.departement;
-
 
 
     if(handicap == "on") {
@@ -98,14 +98,44 @@ router.post('/', function(req, res, next) {
 
     });
 
-    // Insertion de l'offre
 
     offre.save().then(function() {
 
         offre.setRecruteur(recId);
-        res.send('ok added : ' + offre.titre + "  " + contrat);
-        console.log("après : " +recId);
-    })
+        for(var i = 0 ; i<req.body.mission.length; i++) {
+
+            var mission = models.Mission_offre.build({
+
+                intitule : req.body.mission[i].intitule,
+                OffreId  : offre.id
+
+            });
+
+            mission.save().then(function(){
+
+                mission.setOffre(offre);
+            })
+        }
+
+        for(var i = 0; i<req.body.competence.length; i++) {
+
+            var competence = models.Competence_offre.build({
+
+                intitule : req.body.competence[i].intitule,
+                niveau : req.body.competence[i].niveau,
+                OffreId : offre.id
+            });
+
+            competence.save().then(function(){
+
+                competence.setOffre(offre);
+            })
+        }
+        console.log(test);
+        res.send('L offre : ' + offre.titre + " a été ajouté  ");
+
+    });
+
 });
 
 module.exports = router;

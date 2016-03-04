@@ -1,135 +1,192 @@
 <%- include('include/header-connect') %>
 
-<section  class="page-title cyan darken-1 white-text">
+<section class="page-title cyan darken-1 white-text" xmlns="http://www.w3.org/1999/html">
     <div class="container">
         <div class="row">
             <div id="logo-title" class="col s3 m1">
-                <i class="medium material-icons">perm_identity</i>
+                <i class="medium material-icons">search</i>
             </div>
 
             <div class="col s9 m8">
                 <h3><%=title%></h3>
             </div>
         </div>
+
     </div>
+
 </section>
 
-<section class="page-content" id="ajouterRecruteur">
-
+<section class="page-content" id="ajouterCV">
 
     <div class="container">
 
-        <form class="col s12 m8 offset-m3" action="/ajouterOffre" method="post">
         <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">account_circle</i>
-                <input id="titre" type="text" name="titre" class="validate">
-                <label for="titre">Titre de l'offre</label>
+            <div class="col s12 m10 offset-m1">
+                <form id="elform" method="post" action="/AjouterOffre">
+
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <!-- PARTIE DESCRIPTION GENERALE DU CV >
+                        <!------------------------------------->
+                        <li>
+                            <div class="collapsible-header active"><i class="material-icons">description</i>Description
+                                générale
+                            </div>
+                            <div class="collapsible-body">
+                                <div id="infogenerales" class="container">
+
+                                    <h4>Résumé</h4>
+                                    <textarea name="resume" class="materialize-textarea" length="255" placeholder="Votre offre en bref"></textarea>
+
+                                    <h4>Veuillez remplir les champs suivants</h4>
+
+                                    <input id="titre" type="text" name="titre" class="validate" required="" aria-required="true" placeholder="Titre">
+                                    <input id="xpRequise" type="text" name="xpRequise" class="validate" required="" aria-required="true" placeholder="Expérience requise">
+                                    <input id="tempDeTravail" type="text" name="tempDeTravail" class="validate" required="" aria-required="true" placeholder="Durée">
+                                    <input id="date" type="date" name="dateEmission" class="datepicker" required="" aria-required="true" placeholder="Date de début">
+                                    <input id="salaire" type="text" name="salaire" class="validate" required="" aria-required="true" placeholder="Salaire">
+                                    <input id="ville" type="text" name="ville" class="validate" required="" aria-required="true" placeholder="ville">
+                                    <input id="mail" type="email" name="mail" class="validate" required="" aria-required="true" placeholder="mail">
+                                    <div class="input-field col s12" class="validate" required="" aria-required="true">
+                                        <select name="contrat">
+                                            <option value="" disabled selected>Contrat</option>
+                                            <%
+                                            for(var i = 0; i<contrat.length; i++) {%>
+                                            <option value="<%=contrat[i].id%>"><%=contrat[i].intitule%></option>
+                                            <%}%>
+                                        </select>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <select name="niveau">
+                                            <option value="" disabled selected>Niveau d'études</option>
+                                            <%
+                                            for(var i = 0; i<NiveauEtud.length; i++) {%>
+                                            <option value="<%=NiveauEtud[i].id%>"><%=NiveauEtud[i].intitule%></option>
+                                            <%}%>
+                                        </select>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <select name="departement">
+                                            <option value="" disabled selected>Departement</option>
+                                            <%
+                                            for(var i = 0; i<Departement.length; i++) {%>
+                                            <option value="<%=Departement[i].id%>"><%=Departement[i].intitule%></option>
+                                            <%}%>
+                                        </select>
+                                    </div>
+
+                                    <br><br>
+                                    <div class="switch ">
+                                        <h6>Adapté aux handicaps</h6>
+                                        <label>
+
+                                            Off
+                                            <input type="checkbox" name="handicap">
+                                            <span class="lever"></span>
+                                            On
+                                        </label>
+                                    </div>
+                                    <br><br>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">public</i>Compétences</div>
+                            <div class="collapsible-body">
+                                <div id="competenceAdd" class="container">
+
+                                </div>
+                                <div class="input-field col s12">
+                                    <p class="center-align">
+                                        <a href="#modalCompetence" class="modal-trigger btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">public</i>Mission</div>
+                            <div class="collapsible-body">
+                                <div id="missionAdd" class="container">
+
+                                </div>
+                                <div class="input-field col s12">
+                                    <p class="center-align">
+                                        <a href="#modalMission" class="modal-trigger btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <!----------------------------------------------->
+                    <!-- FIN PARTIE DESCRIPTION Centre Interet DU CV >
+                    <!------------- DEBUT DIV RECEPTION HIDDEN INPUT >
+                    <------------------------------------------------>
+                    <div id="elements_Offre">
+
+                    </div>
+
+                    <div class="row">
+                        <button class="btn waves-effect waves-light blue-grey darken-1" type="submit" name="enregistrer">Enregistrer
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div class="input-field col s6">
-                <i class="material-icons prefix">phone</i>
-                <input id="xpRequise" type="text" name="xpRequise" class="validate">
-                <label for="xpRequise">Expérience requise</label>
-            </div>
+
         </div>
-
-        <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">account_circle</i>
-                <input id="tempDeTravail" type="text" name="tempDeTravail" class="validate">
-                <label for="tempDeTravail">Durée</label>
-            </div>
-            <div class="input-field col s6">
-                <i class="material-icons prefix">phone</i>
-                <input id="resume" type="text" name="resume" class="validate">
-                <label for="resume">Résumé</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">account_circle</i>
-                <input id="salaire" type="text" name="salaire" class="validate">
-                <label for="salaire">Salaire</label>
-            </div>
-            <div class="input-field col s6">
-                <i class="material-icons prefix">phone</i>
-                <input id="ville" type="text" name="ville" class="validate">
-                <label for="ville">Ville</label>
-            </div>
-        </div>
-
-            <div class="row">
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input id="mail" type="email" name="mail" class="validate">
-                    <label for="mail">Mail</label>
-                </div>
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">phone</i>
-                    <input id="ville" type="date" name="dateEmission" class="datepicker">
-                    <label for="ville">Date Emission</label>
-                </div>
-            </div>
-
-            <div class="input-field col s12">
-                <select name="contrat">
-                    <option value="" disabled selected>Contrat</option>
-                    <%
-                    for(var i = 0; i<contrat.length; i++) {%>
-                    <option value="<%=contrat[i].id%>"><%=contrat[i].intitule%></option>
-                    <%}%>
-                </select>
-            </div>
-
-            <div class="input-field col s12">
-                <select name="niveau">
-                    <option value="" disabled selected>Niveau d'études</option>
-                    <%
-                    for(var i = 0; i<NiveauEtud.length; i++) {%>
-                    <option value="<%=NiveauEtud[i].id%>"><%=NiveauEtud[i].intitule%></option>
-                    <%}%>
-
-                </select>
-            </div>
-
-
-            <div class="input-field col s12">
-                <select name="departement">
-                    <option value="" disabled selected>Departement</option>
-                    <%
-                    for(var i = 0; i<Departement.length; i++) {%>
-                    <option value="<%=Departement[i].id%>"><%=Departement[i].intitule%></option>
-                    <%}%>
-                </select>
-            </div>
-
-            <br>
-            <div class="switch ">
-                <h5>Adapté aux handicaps</h5>
-                <label>
-
-                    Off
-                    <input type="checkbox" name="handicap">
-                    <span class="lever"></span>
-                    On
-                </label>
-            </div>
-
-            <br>
-
-            <center>
-
-                <div class="row">
-                    <button class="btn waves-effect waves-light blue-grey darken-1" type="submit" name="connexion">S'inscrire
-                        <i class="material-icons right">send</i>
-                    </button>
-                </div>
-            </center>
-        </form>
     </div>
-
 </section>
 
+<!-- Fenêtre modale de Compétence -->
+<div id="modalCompetence" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>Compétence</h4>
+        <div class="row"
+             style="border-bottom: 1px solid #ddd; padding-bottom: 20px; padding-top: 20px">
+            <div class="input-field col s12">
+                <div class="input-field col s12">
+                    <input name="intituleCompetence" type="text" length="50">
+                    <label for="intituleCompetence">Intitulé de la compétence</label>
+                </div>
+                <div class="input-field col s4">
+                    <select name="niveauCompetence">
+                        <option value="" disabled selected>Niveau de maitrise</option>
+                        <option value="1">nul</option>
+                        <option value="2">Intermédiaire</option>
+                        <option value="3">Bon</option>
+                        <option value="4">Pro</option>
+                        <option value="5">Expert</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" id="btn_ajout_competence" class=" modal-action modal-close waves-effect waves-green btn-flat">Ajouter</a>
+    </div>
+</div>
+<!-- Fenêtre modale de Missions -->
 
+<div id="modalMission" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>Mission</h4>
+        <div class="row"
+             style="border-bottom: 1px solid #ddd; padding-bottom: 20px; padding-top: 20px">
+            <div class="input-field col s12">
+                <div class="input-field col s12">
+                    <input name="intituleMission" type="text" length="50">
+                    <label for="intituleMission">Intitulé de la mission</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" id="btn_ajout_mission" class=" modal-action modal-close waves-effect waves-green btn-flat">Ajouter</a>
+    </div>
+</div>
 
 <%- include('include/footer') %>
+<script type="text/javascript" src="/js/ajouterOffre-event.js"></script>

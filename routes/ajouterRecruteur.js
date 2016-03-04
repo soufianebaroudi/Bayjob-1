@@ -46,12 +46,16 @@ router.post('/', function(req, res, next) {
         type : "R"
     })
 
+    utilisateur.save().then(function() {
+
+
+    })
     recruteur.save().then(function() {
        // res.send('ok added : ' + recruteur.nomRecruteur);
-    })
-
-    utilisateur.save().then(function() {
+        utilisateur.setRecruteur(recruteur);
         res.send('ok added : ' + recruteur.nomRecruteur + 'mail : ' + utilisateur.mail);
     })
+
+
 });
 module.exports = router;
