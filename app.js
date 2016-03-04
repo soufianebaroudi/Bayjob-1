@@ -19,7 +19,6 @@ var ajouterOffre = require('./routes/ajouterOffre');
 var offre = require('./routes/offres');
 
 
-
 var app = express();
 
 // view engine setup
