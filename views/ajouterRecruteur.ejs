@@ -1,10 +1,10 @@
 <%- include('include/header-connect') %>
 
-<section class="page-title cyan darken-1 white-text" xmlns="http://www.w3.org/1999/html">
+<section  class="page-title cyan darken-1 white-text">
     <div class="container">
         <div class="row">
             <div id="logo-title" class="col s3 m1">
-                <i class="medium material-icons">search</i>
+                <i class="medium material-icons">perm_identity</i>
             </div>
 
             <div class="col s9 m8">
@@ -17,249 +17,99 @@
 <section class="page-content" id="ajouterRecruteur">
     <div class="container">
 
-        <div class="row">
-            <h2 style="text-align: center">Veuillez remplir le formulaire ci-aprés svp.</h2>
-            <div class="col s12 m10 offset-m1">
-                <form method="post" action="/ajouterRecruteur">
-                    <ul class="collapsible" data-collapsible="accordion">
-                        <li>
-                            <div class="collapsible-header active"><i class="material-icons">description</i>Description
-                                générale
-                            </div>
-                            <div class="collapsible-body">
-                                <div class=" input-field col s10 offset-m2">
-                                    <div  class="input-field col s10">
-                                        <% if (nomRecruteur != null) { %>
-                                        <input id="nomRecruteur" value="<%=nomRecruteur%>" type="text" name="nomRecruteur"  class="validate">
-                                        <% } else { %>
-                                        <input id="nomRecruteur" type="text" name="nomRecruteur" placeholder="Nom" class="validate" required="" aria-required="true">
-                                        <% } %>
-                                    </div>
-
-                                    <div  class="input-field col s10">
-                                        <% if (prenomRecruteur != null) { %>
-                                        <input id="prenomRecruteur" value="<%=prenomRecruteur%>" type="text"  name="prenomRecruteur" class="validate" >
-                                        <% } else { %>
-                                        <input id="prenomRecruteur" type="text" name="prenomRecruteur" placeholder="Prénom" class="validate" required="" aria-required="true">
-                                        <% } %>
-                                    </div>
-
-                                    <div  class="input-field col s10">
-                                        <% if (nomEntreprise != null) { %>
-                                        <input id="nomEntreprise" type="text" value="<%=nomEntreprise%>" name="nomEntreprise">
-                                        <% } else { %>
-                                        <input id="nomEntreprise" type="text" name="nomEntreprise" placeholder="Nom de l'entreprise" class="validate" required="" aria-required="true">
-                                        <% } %>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header"><i class="material-icons">call</i>Coordonnées téléphoniques</div>
-                            <div id="parent" class="collapsible-body">
-                                <div class=" input-field col s10 offset-m2">
-                                    <div  class="input-field col s10">
-                                        <% if (telFixe != null) { %>
-                                        <input id="telFixe" value="<%=telFixe%>" type="tel" name="telFixe">
-                                        <% } else { %>
-                                        <input id="telFixe" type="tel" name="telFixe" placeholder="Telephone Fix" class="validate" required="" aria-required="true">
-                                        <% } %>
-                                    </div>
-
-                                    <div  class="input-field col s10">
-                                        <% if (telMobile != null) { %>
-                                        <input id="telMobile" value="<%=telMobile%>" type="tel" name="telMobile">
-                                        <% } else { %>
-                                        <input id="telMobile" type="tel" name="telMobile" placeholder="Telephone Mobile" class="validate" required="" aria-required="true">
-                                        <% } %>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header"><i class="material-icons">navigation</i>Adresse</div>
-                            <div id="parent" class="collapsible-body">
-                                <div class=" input-field col s10 offset-m2">
-                                    <div  class="input-field col s10">
-                                        <% if (adresse != null) { %>
-                                        <input id="adresse" value="<%=adresse%>" type="text" name="adresse">
-                                        <% } else { %>
-                                        <input id="adresse" type="text" name="adresse" placeholder="Adresse" class="validate" required="" aria-required="true">
-                                        <% } %>
-                                    </div>
-
-                                    <div  class="input-field col s10">
-                                        <% if (ville != null) { %>
-                                        <input id="ville" value="<%=ville%>" type="text" name="ville" >
-                                        <% } else { %>
-                                    </div>
-
-                                    <div id="locationField" class="input-field col s10">
-                                        <input id="autocomplete" placeholder="Ville" onFocus="geolocate()" name="lieu" type="text" class="validate" required="" aria-required="true">
-                                    </div>
-                                    <div id="address">
-                                        <input type="hidden" name="ville" id="locality" disabled="false"/>
-                                    </div>
-                                    <% } %>
-
-                                    <div  class="input-field col s10">
-                                        <% if (cp != null) { %>
-                                        <input id="cp" value="<%=cp%>" type="text" name="cp" class="validate">
-                                        <% } else { %>
-                                        <input id="cp" type="text" name="cp" placeholder="Code Postale" class="validate" required="" aria-required="true">
-                                        <% } %>
-                                    </div>
-
-                                    <div  class="input-field col s10">
-
-                                        <% if (ErroHandler == 0) {%>
-                                        <select id="select_pays" name="pays">
-                                            <option value="72" selected="selected">France </option>
-                                            <% for(var i = 0; i<pays.length; i++) {%>
-                                            <option value="<%=pays[i].id%>"><%=pays[i].intitule%></option>
-                                            <%}%>
-                                        </select>
-                                        <% } else { %>
-                                        <select id="select_pays" name="pays">
-                                            <option value="<%=pays.id%>" selected="selected"><%=pays.intitule%></option>
-                                        </select>
-                                        <% } %>
-
-                                    </div>
-
-                                    <div id="select_departement" class="input-field col s10">
-                                        <% if (ErroHandler == 0) {%>
-                                        <select  name="dep">
-                                            <% for(var i = 0; i<departement.length; i++) {%>
-                                            <option value="<%=departement[i].id%>"><%=departement[i].intitule%></option>
-                                            <%}%>
-                                        </select>
-                                        <% } else { %>
-                                        <select name="dep">
-                                            <option value="<%=departement.id%>" selected="selected"><%=departement.intitule%></option>
-                                        </select>
-                                        <% } %>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header"><i class="material-icons">perm_identity</i>Information de connexion</div>
-                            <div id="parent" class="collapsible-body">
-                                <div class="container">
-                                    <% if (Err == null) { %>
-                                    <table>
-                                        <tbody>
-                                        <tr>
-                                            <td><input type="email" name="mail" placeholder="Email" class="validate" required="" aria-required="true"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="email" name="retapEmail" placeholder="Confirmation EMail" class="validate" required="" aria-required="true"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="password" name="mdp" placeholder="Mot de passe" class="validate" required="" aria-required="true"></td>
-                                        </tr>
-                                        <tr>
-                                            <td> <input type="password" name="retapMdp" placeholder="Confirmation Mot de passe" class="validate" required="" aria-required="true"></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                    <% } else if (Err == '1') { %>
-                                    <table>
-                                        <tbody>
-                                        <tr>
-                                            <td><input value="<%=mail%>" type="email" name="mail" required="" aria-required="true"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input value="<%=mail%>" type="email" name="retapEmail" required="" aria-required="true"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Les mots de passe sont différents !</br>
-                                                <input type="password" name="mdp" placeholder="Mot de passe" class="invalid" required="" aria-required="true"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="password" name="retapMdp" placeholder="Confirmation Mot de passe" class="invalid" required="" aria-required="true"> </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                    <% } else if (Err == '2') { %>
-                                    <table>
-                                        <tbody>
-                                        <tr>
-                                            <td>Les adresses Email sont différentes !</br>
-                                                <input type="email" name="mail" placeholder="Mail" class="invalid" required="" aria-required="true" ></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="email" name="retapEmail" placeholder="Confirmation Email" class="invalid" required="" aria-required="true"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input value="<%=mdp%>" type="password" name="mdp" required="" aria-required="true"> </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input value="<%=mdp%>" type="password" name="retapMdp" required="" aria-required="true"></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+            <form class="col s12 m8 offset-m3" action="/ajouterRecruteur" method="post">
 
 
-                                    <% } else if (mailExist == 1){ %>
-                                    <table>
-                                        <tbody>
-                                        <tr>
-                                            <td>L'adresse mail que vous avez saisie existe déjà !</br>
-                                                <input type="email" name="mail" placeholder="Mail" class="invalid" class="validate" required="" aria-required="true"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="email" name="retapEmail" placeholder="Confirmation Email" class="invalid" class="validate" required="" aria-required="true"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input value="<%=mdp%>" type="password" name="mdp" class="validate" required="" aria-required="true"> </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input value="<%=mdp%>" type="password" name="retapMdp" class="validate" required="" aria-required="true"></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-
-
-                                    <% } else if (Err == '3') { %>
-                                    <table>
-                                        <tbody>
-                                        <tr>
-                                            <td> Les adresses Email sont différentes !
-                                                <input type="email" name="mail" placeholder="EMail" class="invalid" class="validate" required="" aria-required="true"> </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="email" name="retapEmail" placeholder="Confirmation Mail" class="invalid" class="validate" required="" aria-required="true"></td>
-                                        </tr>
-                                        <tr>
-                                            <td> Les mots de passe sont différents !
-                                                <input type="password" name="mdp" placeholder="Mot de passe" class="invalid" class="validate" required="" aria-required="true"> </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="password" name="retapMdp" placeholder="Confirmation Mot de passe" class="invalid" class="validate" required="" aria-required="true"></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                    <% } %>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="row center-align">
-                        <button class="btn waves-effect waves-light" type="submit" name="enregistrer">Enregistrer
-                            <i class="material-icons right">send</i>
-                        </button>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="nomRecruteur" type="text" name="nomRecruteur" class="validate">
+                        <label for="nomRecruteur">Nom</label>
                     </div>
-                </form>
-            </div>
-        </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="prenomRecruteur" type="text" name="prenomRecruteur" class="validate">
+                        <label for="prenomRecruteur">Prénom</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="nomEntreprise" type="text" name="nomEntreprise" class="validate">
+                        <label for="nomEntreprise">Entreprise</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="adresse" type="text" name="adresse" class="validate">
+                        <label for="adresse">Adresse</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="ville" type="text" name="ville" class="validate">
+                        <label for="ville">Ville</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="cp" type="text" name="cp" class="validate">
+                        <label for="cp">Code Postale</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="pays" type="text" name="pays" class="validate">
+                        <label for="pays">Pays</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="telFixe" type="tel" name="telFixe" class="validate">
+                        <label for="telFixe">Telephone Fix</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="telMobile" type="tel" name="telMobile" class="validate">
+                        <label for="telMobile">Telephone Mobile</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="mail" type="email" name="mail" class="validate">
+                        <label for="mail">Mail</label>
+                    </div>
+                </div>
+
+               <center>
+
+                   <div class="row">
+
+                       <div class="input-field col s6">
+                           <i class="material-icons prefix">account_circle</i>
+                           <input id="mdp" type="password" name="mdp" class="validate">
+                           <label for="mdp">Mot de passe</label>
+                       </div>
+                   </div>
+               </center>
+                <br>
+                <center>
+
+                   <div class="row">
+                    <button class="btn waves-effect waves-light blue-grey darken-1" type="submit" name="connexion">S'inscrire
+                        <i class="material-icons right">send</i>
+                    </button>
+                     </div>
+               </center>
+            </form>
+
     </div>
+
 </section>
 
-<script src="/js/recruteur-coordinate.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvTewOiQvvKOS9RNOjYIN-qgE9NrcSKy4&signed_in=true&libraries=places&callback=initAutocomplete"
-        async defer></script>
 
 <%- include('include/footer') %>

@@ -16,8 +16,7 @@ var ajouterCv = require('./routes/ajouterCv');
 var cv = require('./routes/cv');
 var rechercheOffres = require('./routes/rechercherOffres');
 
-//Routes de l'espace Recruteur
-var espaceRecruteur = require('./routes/espaceRecruteur');
+//Routes de l'espace candidat
 var ajouterRecruteur = require('./routes/ajouterRecruteur');
 var ajouterOffre = require('./routes/ajouterOffre');
 var offre = require('./routes/offres');
@@ -79,9 +78,6 @@ app.use('/rechercheOffres', rechercheOffres);
 app.use('/ajouterRecruteur', ajouterRecruteur);
 app.use('/ajouterOffre', ajouterOffre);
 app.use('/offre', offre);
-app.use('/espaceRecruteur', espaceRecruteur);
-//app.use('/modifierRecruteur');
-//app.use('/modifierOffre');
 
 //Authentification
 app.use('/login',login);

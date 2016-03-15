@@ -26,4 +26,5 @@ $( document ).ready(function(){
       $('#select_departement').show();
     }
   });
+
 });
