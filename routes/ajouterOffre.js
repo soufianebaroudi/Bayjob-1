@@ -44,7 +44,6 @@ router.post('/', function(req, res, next) {
 // Recuperation de l'identifiant du recruteur à partir de la session
 
     var recId;
-    var ttt;
     sess = req.session;
     models.Recruteur.findOne({
 
@@ -101,7 +100,12 @@ router.post('/', function(req, res, next) {
 
     offre.save().then(function() {
 
+        // Attribution de l'identifiant du recruteur à l'offre créee
+
         offre.setRecruteur(recId);
+
+        // ajouter chaque mission dans la table correspondante et y attribuer l'id de l'offre
+
         for(var i = 0 ; i<req.body.mission.length; i++) {
 
             var mission = models.Mission_offre.build({
@@ -117,6 +121,8 @@ router.post('/', function(req, res, next) {
             })
         }
 
+        // ajouter chaque compétence dans la table correspondante et y attribuer l'id de l'offre
+
         for(var i = 0; i<req.body.competence.length; i++) {
 
             var competence = models.Competence_offre.build({
@@ -131,7 +137,7 @@ router.post('/', function(req, res, next) {
                 competence.setOffre(offre);
             })
         }
-        console.log(test);
+
         res.send('L offre : ' + offre.titre + " a été ajouté  ");
 
     });
